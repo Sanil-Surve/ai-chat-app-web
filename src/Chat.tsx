@@ -17,7 +17,7 @@ const Chat = () => {
 
     // Initialize socket connection
     useEffect(() => {
-        socketRef.current = io('http://31.97.202.251:8888', {
+        socketRef.current = io(`${import.meta.env.VITE_BACKEND_URL}`, {
             reconnectionAttempts: 5,
             reconnectionDelay: 1000,
             transports: ['websocket'],
