@@ -155,15 +155,15 @@ const Chat = () => {
                 display: 'flex',
                 flexDirection: 'column',
                 height: '100vh',
-                maxWidth: 600,
+                maxWidth: "90vw",
                 margin: '0 auto',
                 p: 2,
                 boxSizing: 'border-box',
             }}
         >
+            <Typography sx={{ mb: 2, textAlign: 'center', fontSize: 36, fontWeight: "bold" }}>Vishwa AI</Typography>
             <Typography variant="subtitle1" sx={{ mb: 2, textAlign: 'center' }}>
                 Status: {isConnected ? '🟢 Connected' : '🔴 Disconnected'}
-                {isStreaming && ' • 📡 Streaming...'}
             </Typography>
 
             <Box
@@ -197,7 +197,7 @@ const Chat = () => {
                         </Typography>
                         <Typography variant="caption" sx={{ display: 'block', mt: 0.5 }}>
                             {message.timestamp.toLocaleTimeString()}
-                            {message.isStreaming && ' • Streaming...'}
+                            {message.isStreaming && ' • Thinking...'}
                         </Typography>
                     </Paper>
                 ))}
@@ -212,7 +212,7 @@ const Chat = () => {
             >
                 <TextField
                     multiline
-                    rows={3}
+                    rows={1}
                     variant="outlined"
                     placeholder="Type your message..."
                     value={inputMessage}
