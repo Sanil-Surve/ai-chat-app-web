@@ -22,7 +22,6 @@ const Chat = () => {
     // Initialize socket connection
     useEffect(() => {
         const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://31.97.202.251:8888';
-        console.log('Using backend URL:', backendUrl);
 
         socketRef.current = io(backendUrl, {
             reconnectionAttempts: 5,
