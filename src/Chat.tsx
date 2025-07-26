@@ -190,8 +190,8 @@ const Chat = () => {
     // Initialize socket connection
     useEffect(() => {
         // Debug: Log the actual URL being used
-        console.log('Backend URL:', import.meta.env.VITE_BACKEND_URL);
-        console.log('Full URL for socket:', `${import.meta.env.VITE_BACKEND_URL}`);
+        // console.log('Backend URL:', import.meta.env.VITE_BACKEND_URL);
+        // console.log('Full URL for socket:', `${import.meta.env.VITE_BACKEND_URL}`);
 
         // Temporary: Hard-code HTTPS URL for testing
         socketRef.current = io('https://31.97.202.251:8888', {
