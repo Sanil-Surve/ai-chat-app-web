@@ -15,6 +15,9 @@ const Chat = () => {
     const [isConnected, setIsConnected] = useState(false);
     const socketRef = useRef<Socket | null>(null);
 
+    // Add a counter to ensure unique IDs
+    const messageCounterRef = useRef(0);
+
     // Initialize socket connection
     useEffect(() => {
         socketRef.current = io(`${import.meta.env.VITE_BACKEND_URL}`, {
@@ -50,8 +53,10 @@ const Chat = () => {
     }, []);
 
     const addMessage = (text: string, sender: 'user' | 'bot') => {
+        // Create truly unique ID using timestamp + counter + random component
+        messageCounterRef.current += 1;
         const newMessage: Message = {
-            id: Date.now().toString(),
+            id: `${Date.now()}-${messageCounterRef.current}-${Math.random().toString(36).substr(2, 9)}`,
             text,
             sender,
             timestamp: new Date(),
