@@ -18,6 +18,12 @@ const Chat = () => {
     const socketRef = useRef<Socket | null>(null);
     const messageCounterRef = useRef(0);
     const currentStreamingMessageId = useRef<string>('');
+    const messagesEndRef = useRef<HTMLDivElement | null>(null);
+    useEffect(() => {
+        if (messagesEndRef.current) {
+            messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
+        }
+    }, [messages]);
 
     // Initialize socket connection
     useEffect(() => {
@@ -209,6 +215,7 @@ const Chat = () => {
                         </Typography>
                     </Paper>
                 ))}
+                <div ref={messagesEndRef} />
             </Box>
 
             <Box
