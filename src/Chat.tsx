@@ -161,7 +161,7 @@ const Chat = () => {
                 boxSizing: 'border-box',
             }}
         >
-            <Typography sx={{ mb: 2, textAlign: 'center', fontSize: 36, fontWeight: "bold" }}>Vishwa AI</Typography>
+            <Typography sx={{ mb: 1, textAlign: 'center', fontSize: 36, fontWeight: "bold" }}>Vishwa AI</Typography>
             <Typography variant="subtitle1" sx={{ mb: 2, textAlign: 'center' }}>
                 Status: {isConnected ? '🟢 Connected' : '🔴 Disconnected'}
             </Typography>
@@ -191,10 +191,18 @@ const Chat = () => {
                             animation: message.isStreaming ? 'pulse 1.5s infinite' : 'none',
                         }}
                     >
-                        <Typography variant="body1">
-                            {message.text}
-                            {message.isStreaming && <span style={{ animation: 'blink 1s infinite' }}>▊</span>}
-                        </Typography>
+                        <Box
+                            sx={{
+                                whiteSpace: 'pre-wrap',
+                                fontFamily: message.sender === 'bot' ? 'monospace' : 'inherit',
+                                fontSize: message.sender === 'bot' ? '1rem' : 'inherit',
+                            }}
+                        >
+                            <Typography variant="body1" sx={{ wordBreak: 'break-word' }}>
+                                {message.text}
+                                {message.isStreaming && <span style={{ animation: 'blink 1s infinite' }}>▊</span>}
+                            </Typography>
+                        </Box>
                         <Typography variant="caption" sx={{ display: 'block', mt: 0.5 }}>
                             {message.timestamp.toLocaleTimeString()}
                             {message.isStreaming && ' • Thinking...'}
