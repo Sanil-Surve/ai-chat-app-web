@@ -27,7 +27,7 @@ const Chat = () => {
 
     // Initialize socket connection
     useEffect(() => {
-        const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://31.97.202.251:8888';
+        const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://www.vishwaai.online';
 
         socketRef.current = io(backendUrl, {
             reconnectionAttempts: 5,
